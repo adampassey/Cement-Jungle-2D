@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public Tilemap tilemap;
     public Sprite CementSprite;
+    public GameObject BuildingPrefab;
 
     private static readonly int LEFT_BUTTON = 0;
 
@@ -29,11 +30,19 @@ public class PlayerController : MonoBehaviour
                 return;
             }
 
-            //tile.gameObject.GetComponent<SpriteRenderer>().sprite = CementSprite;
-            //tile.sprite = CementSprite;
+            //  set to cement tile
             Tile new_tile = ScriptableObject.CreateInstance<Tile>();
             new_tile.sprite = CementSprite;
             tilemap.SetTile(pos, new_tile);
+
+            //  add building
+            GameObject building = GameObject.Instantiate(BuildingPrefab);
+            building.transform.position = tilemap.CellToWorld(pos);
+
+            //  TODO: sprite renderer based on pos
+            //  TODO: update sprite to be current building
+
+            PlayerData.buildings += 1;
         }
     }
 }

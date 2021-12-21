@@ -5,9 +5,16 @@ using UnityEngine.UI;
 
 public class PlayerData : MonoBehaviour
 {
+    //  editor associations
     public static PlayerData Instance;
-    public Text resource_text; 
+    public Text resource_text;
 
+    public static Sprite SelectedBuildingSprite;
+
+    //  buildings
+    public static int buildings = 0;
+
+    //  resources
     public int resources {
         get { return _resources; }
         set {

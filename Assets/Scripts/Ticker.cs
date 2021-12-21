@@ -8,13 +8,11 @@ public class Ticker : MonoBehaviour
     public int base_resource_value = 10;
 
     private float _last_tick = 0f;
-    private PlayerData _data;
 
     // Start is called before the first frame update
     void Start()
     {
         _last_tick = Time.timeSinceLevelLoad;
-        _data = PlayerData.Instance;
     }
 
     // Update is called once per frame
@@ -28,6 +26,6 @@ public class Ticker : MonoBehaviour
 
     private void AddResources() {
         Debug.Log("Adding resources");
-        _data.resources += base_resource_value;
+        PlayerData.Instance.resources += (base_resource_value * PlayerData.buildings);
     }
 }
